@@ -25,7 +25,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/getuser")
+    @GetMapping("/getuser")
     public User getUser(int id){
         return userService.getById(id);
     }
