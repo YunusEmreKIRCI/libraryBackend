@@ -35,13 +35,13 @@ public class UserController {
         userService.add(userToAddDto);
     }
 
-    @PostMapping("/delete")
-    public void deleteUser(int id){
+    @DeleteMapping("/delete")
+    public void deleteUser(@RequestParam int id){
         userService.delete(id);
 
     }
-    @PostMapping("/update")
-    public void updateUser(int id, String password){
+    @PutMapping("/update")
+    public void updateUser( int id, @RequestBody String password){
         userService.updatePassword(id, password);
     }
 

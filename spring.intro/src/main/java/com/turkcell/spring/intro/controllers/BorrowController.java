@@ -19,13 +19,13 @@ public class BorrowController {
         return borrowService.list();
     }
 
-    @GetMapping("/delete")
-    public void deleteBorrow(int id){
+    @DeleteMapping("/delete")
+    public void deleteBorrow(@RequestParam int id){
         borrowService.delete(id);
     }
 
-    @GetMapping("/update")
-    public void updateBorrow(int id){
+    @PutMapping("/update")
+    public void updateBorrow(@RequestParam int id){
         borrowService.update(id);
     }
 

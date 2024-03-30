@@ -26,17 +26,17 @@ public class AttendantController {
     }
 
     @GetMapping("/getattendant")
-    public Attendant getAttendant(int id){
+    public Attendant getAttendant(@RequestParam int id){
         return attendantService.getById(id);
     }
 
-    @GetMapping("/delete")
-    public void deleteAttendant(int id){
+    @DeleteMapping("/delete")
+    public void deleteAttendant(@RequestParam int id){
         attendantService.delete(id);
     }
 
-    @GetMapping("/update")
-    public void updateAttendant(int id, String password){
+    @PutMapping("/update")
+    public void updateAttendant(int id, @RequestBody String password){
         attendantService.updatePassword(id, password);
     }
 

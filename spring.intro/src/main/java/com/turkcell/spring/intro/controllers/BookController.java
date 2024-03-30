@@ -29,12 +29,12 @@ public class BookController {
         return bookService.getById(id);
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public void deleteBook(@RequestParam int id){
         bookService.delete(id);
     }
 
-    @GetMapping("/update")
+    @PutMapping("/update")
     public void updateBook(@RequestParam int id){
         bookService.updateAvailabilty(id);
     }
