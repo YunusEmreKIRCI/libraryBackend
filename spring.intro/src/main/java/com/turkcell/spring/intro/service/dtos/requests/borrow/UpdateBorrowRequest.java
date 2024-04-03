@@ -1,4 +1,5 @@
 package com.turkcell.spring.intro.service.dtos.requests.borrow;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
