@@ -6,11 +6,12 @@ import com.turkcell.spring.intro.service.dtos.responses.attendant.DeleteAttendan
 import com.turkcell.spring.intro.service.dtos.responses.attendant.GetAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.UpdateAttendantResponse;
 import com.turkcell.spring.intro.service.mappers.abstracts.AttendantMapper;
-import com.turkcell.spring.intro.service.mappers.abstracts.AttendantMapper;
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class AttendantMapperImpl implements AttendantMapper {
 
     @Override
@@ -44,6 +45,9 @@ public class AttendantMapperImpl implements AttendantMapper {
 
     @Override
     public GetAttendantResponse mapToAttendantResponse(Attendant attendant) {
-        return null;
+        GetAttendantResponse attendantResponse = new GetAttendantResponse();
+        attendantResponse.setPassword(attendant.getPassword());
+        attendantResponse.setEmail(attendant.getEmail());
+        return attendantResponse;
     }
 }

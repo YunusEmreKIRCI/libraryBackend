@@ -12,8 +12,9 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper
+
 public interface AttendantMapper {
-    BorrowMapper INSTANCE = Mappers.getMapper(BorrowMapper.class);
+    AttendantMapper INSTANCE = Mappers.getMapper(AttendantMapper.class);
 
     Attendant mapToAttendant(AddAttendantRequest attendantDto);
     DeleteAttendantResponse mapToDeleteAttendantResponse(Attendant attendant);
