@@ -2,6 +2,7 @@ package com.turkcell.spring.intro.service.mappers.abstracts;
 
 import com.turkcell.spring.intro.entities.User;
 import com.turkcell.spring.intro.service.dtos.requests.borrow.GetBorrowRequest;
+import com.turkcell.spring.intro.service.dtos.responses.user.AddUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.DeleteUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.GetUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.UpdateUserResponse;
@@ -14,6 +15,7 @@ import java.util.List;
 public interface UserMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
+    AddUserResponse mapToAddUserResponse(User user);
     User mapToUser(GetBorrowRequest userDto);
     GetUserResponse mapToUserResponse(User user);
     DeleteUserResponse mapToDeleteUserResponse(User user);

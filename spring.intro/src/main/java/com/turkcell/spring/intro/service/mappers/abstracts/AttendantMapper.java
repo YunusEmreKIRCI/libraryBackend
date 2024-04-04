@@ -14,10 +14,13 @@ import java.util.List;
 @Mapper
 public interface AttendantMapper {
     BorrowMapper INSTANCE = Mappers.getMapper(BorrowMapper.class);
+
     Attendant mapToAttendant(AddAttendantRequest attendantDto);
     DeleteAttendantResponse mapToDeleteAttendantResponse(Attendant attendant);
     AddAttendantResponse mapToAddAttendantResponse(Attendant attendant);
     UpdateAttendantResponse mapToUpdateAttendantResponse(Attendant attendant);
 
     List<GetAttendantResponse> mapToAttendantResponseList(List<Attendant> attendants);
+
+    GetAttendantResponse mapToAttendantResponse(Attendant attendant);
 }

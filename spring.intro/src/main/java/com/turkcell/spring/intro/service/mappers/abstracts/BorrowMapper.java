@@ -1,6 +1,8 @@
 package com.turkcell.spring.intro.service.mappers.abstracts;
 
+import com.turkcell.spring.intro.entities.Attendant;
 import com.turkcell.spring.intro.entities.Borrow;
+import com.turkcell.spring.intro.service.dtos.requests.attendant.AddAttendantRequest;
 import com.turkcell.spring.intro.service.dtos.requests.borrow.AddBorrowRequest;
 import com.turkcell.spring.intro.service.dtos.responses.borrow.GetBorrowResponse;
 import org.mapstruct.Mapper;
@@ -14,4 +16,6 @@ public interface BorrowMapper {
     @Mapping(source = "userId", target = "user.id")
     Borrow mapToBorrow(AddBorrowRequest borrowRequest);
     GetBorrowResponse mapToBorrowResponse(Borrow borrow);
+
+
 }
