@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
         }
         else{
 
-            return userMapper.mapToGetUserResponse(userRepository.save(user));
+            return userMapper.mapToUserResponse(userRepository.save(user));
         }
     }
 }
