@@ -12,4 +12,7 @@ import lombok.Setter;
 public class GetAttendantResponse {
     private String email;
     private String password;
+
+    public void setId(int id) {
+    }
 }

@@ -1,7 +1,6 @@
 package com.turkcell.spring.intro.service.mappers.abstracts;
 
 import com.turkcell.spring.intro.entities.User;
-import com.turkcell.spring.intro.service.dtos.requests.borrow.GetBorrowRequest;
 import com.turkcell.spring.intro.service.dtos.requests.user.AddUserRequest;
 import com.turkcell.spring.intro.service.dtos.responses.user.AddUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.DeleteUserResponse;
@@ -13,7 +12,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-04T11:59:50+0300",
+    date = "2024-04-06T00:39:32+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
@@ -40,7 +39,8 @@ public class UserMapperImpl implements UserMapper {
 
         User user = new User();
 
-        user.setId( userDto.getId() );
+        user.setEmail( userDto.getEmail() );
+        user.setPassword( userDto.getPassword() );
 
         return user;
     }

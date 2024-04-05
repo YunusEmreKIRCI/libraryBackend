@@ -2,17 +2,17 @@ package com.turkcell.spring.intro.service.mappers.abstracts;
 
 import com.turkcell.spring.intro.entities.Attendant;
 import com.turkcell.spring.intro.service.dtos.requests.attendant.AddAttendantRequest;
+import com.turkcell.spring.intro.service.dtos.requests.attendant.UpdateAttendantRequest;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.AddAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.DeleteAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.GetAttendantResponse;
-import com.turkcell.spring.intro.service.dtos.responses.attendant.UpdateAttendantResponse;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-04T12:28:53+0300",
+    date = "2024-04-06T01:53:42+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class AttendantMapperImpl implements AttendantMapper {
@@ -60,17 +60,17 @@ public class AttendantMapperImpl implements AttendantMapper {
     }
 
     @Override
-    public UpdateAttendantResponse mapToUpdateAttendantResponse(Attendant attendant) {
+    public UpdateAttendantRequest mapToUpdateAttendantResponse(Attendant attendant) {
         if ( attendant == null ) {
             return null;
         }
 
-        UpdateAttendantResponse updateAttendantResponse = new UpdateAttendantResponse();
+        UpdateAttendantRequest updateAttendantRequest = new UpdateAttendantRequest();
 
-        updateAttendantResponse.setId( attendant.getId() );
-        updateAttendantResponse.setEmail( attendant.getEmail() );
+        updateAttendantRequest.setId( attendant.getId() );
+        updateAttendantRequest.setPassword( attendant.getPassword() );
 
-        return updateAttendantResponse;
+        return updateAttendantRequest;
     }
 
     @Override
@@ -95,6 +95,7 @@ public class AttendantMapperImpl implements AttendantMapper {
 
         GetAttendantResponse getAttendantResponse = new GetAttendantResponse();
 
+        getAttendantResponse.setId( attendant.getId() );
         getAttendantResponse.setEmail( attendant.getEmail() );
         getAttendantResponse.setPassword( attendant.getPassword() );
 

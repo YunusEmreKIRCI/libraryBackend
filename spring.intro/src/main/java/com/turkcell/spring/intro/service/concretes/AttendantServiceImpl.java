@@ -9,7 +9,6 @@ import com.turkcell.spring.intro.service.dtos.requests.attendant.UpdateAttendant
 import com.turkcell.spring.intro.service.dtos.responses.attendant.AddAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.DeleteAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.GetAttendantResponse;
-import com.turkcell.spring.intro.service.dtos.responses.attendant.UpdateAttendantResponse;
 import com.turkcell.spring.intro.service.mappers.abstracts.AttendantMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -42,7 +41,7 @@ public class AttendantServiceImpl implements AttendantService{
     }
 
     @Override
-    public UpdateAttendantResponse updatePassword(UpdateAttendantRequest request) {
+    public UpdateAttendantRequest updatePassword(UpdateAttendantRequest request) {
         Attendant attendant = attendantRepository.findById(request.getId()).orElse(null);
         if(attendant == null){
             throw new IllegalArgumentException("Attendant not found");

@@ -1,9 +1,7 @@
 package com.turkcell.spring.intro.service.mappers.concretes;
 
 import com.turkcell.spring.intro.entities.User;
-import com.turkcell.spring.intro.service.dtos.requests.borrow.GetBorrowRequest;
 import com.turkcell.spring.intro.service.dtos.requests.user.AddUserRequest;
-import com.turkcell.spring.intro.service.dtos.requests.user.GetUserRequest;
 import com.turkcell.spring.intro.service.dtos.responses.user.AddUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.DeleteUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.GetUserResponse;
@@ -16,34 +14,50 @@ import java.util.List;
 
 @Component
 public class UserMapperImpl implements UserMapper {
+
     UserMapper userMapper;
     @Override
     public AddUserResponse mapToAddUserResponse(User user) {
-        return userMapper.mapToAddUserResponse(user);
+        AddUserResponse response = new AddUserResponse();
+        response.setEmail(user.getEmail());
+        response.setId(user.getId());
+        return response;
+
     }
 
     @Override
-    public User mapToUser(AddUserRequest userDto)
-    {
-        return userMapper.mapToUser(userDto);
+    public User mapToUser(AddUserRequest userDto) {
+        User user = new User();
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+
+        return user;
     }
 
     @Override
     public GetUserResponse mapToUserResponse(User user) {
-
-        return userMapper.mapToUserResponse(user);
+        GetUserResponse response = new GetUserResponse();
+        response.setEmail(user.getEmail());
+        response.setPassword(user.getPassword());
+        return response;
     }
 
     @Override
     public DeleteUserResponse mapToDeleteUserResponse(User user) {
+        DeleteUserResponse response = new DeleteUserResponse();
+        response.setEmail(user.getEmail());
+        response.setId(user.getId());
+        return response;
 
-        return userMapper.mapToDeleteUserResponse(user);
     }
 
     @Override
     public UpdateUserResponse mapToUpdateUserResponse(User user) {
+        UpdateUserResponse response = new UpdateUserResponse();
+        response.setId(user.getId());
+        response.setEmail(user.getEmail());
+        return response;
 
-        return userMapper.mapToUpdateUserResponse(user);
     }
 
     @Override

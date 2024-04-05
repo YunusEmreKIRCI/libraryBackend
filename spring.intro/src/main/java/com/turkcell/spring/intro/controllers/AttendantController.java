@@ -1,7 +1,5 @@
 package com.turkcell.spring.intro.controllers;
 
-import com.turkcell.spring.intro.entities.Attendant;
-import com.turkcell.spring.intro.service.dtos.AttendantToAddDto;
 import com.turkcell.spring.intro.service.dtos.requests.attendant.AddAttendantRequest;
 import com.turkcell.spring.intro.service.dtos.requests.attendant.DeleteAttendantRequest;
 import com.turkcell.spring.intro.service.dtos.requests.attendant.GetAttendantRequest;
@@ -9,7 +7,6 @@ import com.turkcell.spring.intro.service.dtos.requests.attendant.UpdateAttendant
 import com.turkcell.spring.intro.service.dtos.responses.attendant.AddAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.DeleteAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.GetAttendantResponse;
-import com.turkcell.spring.intro.service.dtos.responses.attendant.UpdateAttendantResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +50,7 @@ public class AttendantController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<UpdateAttendantResponse> updateAttendant(@RequestBody UpdateAttendantRequest request){
+    public ResponseEntity<UpdateAttendantRequest> updateAttendant(@RequestBody UpdateAttendantRequest request){
         return ResponseEntity.ok(attendantService.updatePassword(request));
     }
 
