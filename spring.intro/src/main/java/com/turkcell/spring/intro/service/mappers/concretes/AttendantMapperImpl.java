@@ -13,25 +13,29 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class AttendantMapperImpl implements AttendantMapper {
+    AttendantMapper attendantMapper;
 
     @Override
     public Attendant mapToAttendant(AddAttendantRequest attendantDto) {
-        return null;
+
+        return attendantMapper.mapToAttendant(attendantDto);
     }
 
     @Override
     public DeleteAttendantResponse mapToDeleteAttendantResponse(Attendant attendant) {
-        return null;
+
+        return attendantMapper.mapToDeleteAttendantResponse(attendant);
     }
 
     @Override
     public AddAttendantResponse mapToAddAttendantResponse(Attendant attendant) {
-        return null;
+
+        return attendantMapper.mapToAddAttendantResponse(attendant);
     }
 
     @Override
     public UpdateAttendantResponse mapToUpdateAttendantResponse(Attendant attendant) {
-        return null;
+        return attendantMapper.mapToUpdateAttendantResponse(attendant);
     }
 
     @Override
@@ -45,9 +49,6 @@ public class AttendantMapperImpl implements AttendantMapper {
 
     @Override
     public GetAttendantResponse mapToAttendantResponse(Attendant attendant) {
-        GetAttendantResponse attendantResponse = new GetAttendantResponse();
-        attendantResponse.setPassword(attendant.getPassword());
-        attendantResponse.setEmail(attendant.getEmail());
-        return attendantResponse;
+        return attendantMapper.mapToAttendantResponse(attendant);
     }
 }

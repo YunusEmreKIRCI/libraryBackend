@@ -36,7 +36,8 @@ public class AttendantServiceImpl implements AttendantService{
             throw new IllegalArgumentException("Attendant not found");
         }
         else{
-            return attendantMapper.mapToDeleteAttendantResponse(attendantRepository.save(attendant));
+            attendantRepository.delete(attendant);
+            return attendantMapper.mapToDeleteAttendantResponse(attendant);
         }
     }
 

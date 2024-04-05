@@ -2,6 +2,7 @@ package com.turkcell.spring.intro.service.mappers.abstracts;
 
 import com.turkcell.spring.intro.entities.User;
 import com.turkcell.spring.intro.service.dtos.requests.borrow.GetBorrowRequest;
+import com.turkcell.spring.intro.service.dtos.requests.user.AddUserRequest;
 import com.turkcell.spring.intro.service.dtos.responses.user.AddUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.DeleteUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.GetUserResponse;
@@ -32,7 +33,7 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public User mapToUser(GetBorrowRequest userDto) {
+    public User mapToUser(AddUserRequest userDto) {
         if ( userDto == null ) {
             return null;
         }

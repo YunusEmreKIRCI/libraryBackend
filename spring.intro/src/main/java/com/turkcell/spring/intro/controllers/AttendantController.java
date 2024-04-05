@@ -26,6 +26,7 @@ public class AttendantController {
 
     private final AttendantService attendantService;
 
+
     @GetMapping("/all")
     public ResponseEntity<List<GetAttendantResponse>> getAll(){
 

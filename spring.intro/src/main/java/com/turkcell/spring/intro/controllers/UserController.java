@@ -7,7 +7,16 @@ import com.turkcell.spring.intro.repositories.AttendantRepository;
 import com.turkcell.spring.intro.repositories.UserRepository;
 import com.turkcell.spring.intro.service.abtracts.UserService;
 import com.turkcell.spring.intro.service.dtos.UserToAddDto;
+import com.turkcell.spring.intro.service.dtos.requests.user.AddUserRequest;
+import com.turkcell.spring.intro.service.dtos.requests.user.DeleteUserRequest;
+import com.turkcell.spring.intro.service.dtos.requests.user.GetUserRequest;
+import com.turkcell.spring.intro.service.dtos.requests.user.UpdateUserRequest;
+import com.turkcell.spring.intro.service.dtos.responses.user.AddUserResponse;
+import com.turkcell.spring.intro.service.dtos.responses.user.DeleteUserResponse;
+import com.turkcell.spring.intro.service.dtos.responses.user.GetUserResponse;
+import com.turkcell.spring.intro.service.dtos.responses.user.UpdateUserResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,31 +27,30 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     @GetMapping("/all")
-    public List<User> getAll(){
+    public ResponseEntity<List<GetUserResponse>> getAll(){
 
 
-        return userService.list();
+        return ResponseEntity.ok(userService.list());
     }
 
 
     @GetMapping("/getuser")
-    public User getUser(int id){
-        return userService.getById(id);
+    public ResponseEntity<GetUserResponse> getUser(GetUserRequest request){
+        return ResponseEntity.ok(userService.getById(request));
     }
     @PostMapping("/add")
-    public void addUser(@RequestBody UserToAddDto userToAddDto){
+    public ResponseEntity<AddUserResponse> addUser(@RequestBody AddUserRequest request){
 
-        userService.add(userToAddDto);
+        return ResponseEntity.ok(userService.add(request));
     }
 
     @DeleteMapping("/delete")
-    public void deleteUser(@RequestParam int id){
-        userService.delete(id);
-
+    public ResponseEntity<DeleteUserResponse> deleteUser(@RequestParam DeleteUserRequest request){
+        return ResponseEntity.ok(userService.delete(request));
     }
     @PutMapping("/update")
-    public void updateUser( int id, @RequestBody String password){
-        userService.updatePassword(id, password);
+    public ResponseEntity<UpdateUserResponse> updateUser(@RequestBody UpdateUserRequest request){
+        return ResponseEntity.ok(userService.updatePassword(request));
     }
 
 

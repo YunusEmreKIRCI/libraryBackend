@@ -11,4 +11,6 @@ import lombok.Setter;
 public class AddAttendantResponse {
     private int id;
     private String email;
+
+
 }
