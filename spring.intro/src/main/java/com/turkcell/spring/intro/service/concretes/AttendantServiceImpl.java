@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.turkcell.spring.intro.service.abtracts.AttendantService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +26,10 @@ public class AttendantServiceImpl implements AttendantService{
 
     @Override
     public AddAttendantResponse add(AddAttendantRequest request) {
+        Optional<Attendant> attendantWithSameEmail = attendantRepository.findByEmail(request.getEmail());
+        if(attendantWithSameEmail.isPresent()){
+            throw new IllegalArgumentException("Attendant with same email already exists");
+        }
        Attendant attendant = attendantMapper.mapToAttendant(request);
        return attendantMapper.mapToAddAttendantResponse(attendantRepository.save(attendant));
     }

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +29,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AddUserResponse add(AddUserRequest request) {
+        Optional<User> userWithSameEmail = userRepository.findByEmail(request.getEmail());
+        if(userWithSameEmail.isPresent()){
+            throw new IllegalArgumentException("User with same email already exists");
+        }
         User user = userMapper.mapToUser(request);
         return userMapper.mapToAddUserResponse(userRepository.save(user));
     }
