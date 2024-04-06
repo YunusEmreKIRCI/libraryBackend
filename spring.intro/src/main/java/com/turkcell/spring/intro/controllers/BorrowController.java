@@ -2,9 +2,21 @@ package com.turkcell.spring.intro.controllers;
 
 import com.turkcell.spring.intro.entities.Borrow;
 import com.turkcell.spring.intro.service.dtos.BorrowToAddDto;
+import com.turkcell.spring.intro.service.dtos.requests.borrow.AddBorrowRequest;
+import com.turkcell.spring.intro.service.dtos.requests.borrow.DeleteBorrowRequest;
+import com.turkcell.spring.intro.service.dtos.requests.borrow.GetBorrowRequest;
+import com.turkcell.spring.intro.service.dtos.requests.borrow.UpdateBorrowRequest;
+import com.turkcell.spring.intro.service.dtos.responses.book.DeleteBookResponse;
+import com.turkcell.spring.intro.service.dtos.responses.book.GetBookResponse;
+import com.turkcell.spring.intro.service.dtos.responses.borrow.AddBorrowResponse;
+import com.turkcell.spring.intro.service.dtos.responses.borrow.DeleteBorrowResponse;
+import com.turkcell.spring.intro.service.dtos.responses.borrow.GetBorrowResponse;
+import com.turkcell.spring.intro.service.dtos.responses.borrow.UpdateBorrowResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.turkcell.spring.intro.service.abtracts.BorrowService;
+
 
 import java.util.List;
 
@@ -15,27 +27,27 @@ public class BorrowController {
     private final BorrowService borrowService;
 
     @GetMapping("/all")
-    public List<Borrow> getAll(){
-        return borrowService.list();
+    public ResponseEntity<List<GetBorrowResponse>> getAll(){
+        return ResponseEntity.ok(borrowService.list());
     }
 
     @DeleteMapping("/delete")
-    public void deleteBorrow(@RequestParam int id){
-        borrowService.delete(id);
+    public ResponseEntity<DeleteBorrowResponse> deleteBorrow(@RequestBody DeleteBorrowRequest request){
+        return ResponseEntity.ok(borrowService.delete(request));
     }
 
     @PutMapping("/update")
-    public void updateBorrow(@RequestParam int id){
-        borrowService.update(id);
+    public ResponseEntity<UpdateBorrowResponse> updateBorrow(@RequestBody UpdateBorrowRequest request){
+        return ResponseEntity.ok(borrowService.update(request));
     }
 
     @PostMapping("/add")
-    public void addBorrow(@RequestBody BorrowToAddDto borrowToAddDto){
-        borrowService.add(borrowToAddDto);
+    public ResponseEntity<AddBorrowResponse> addBorrow(@RequestBody AddBorrowRequest request){
+        return ResponseEntity.ok(borrowService.add(request));
     }
 
     @GetMapping("/getborrow")
-    public Borrow getBorrow(int id){
-        return borrowService.getById(id);
+    public ResponseEntity<GetBorrowResponse> getBorrow(@RequestBody GetBorrowRequest request){
+        return ResponseEntity.ok(borrowService.getById(request));
     }
 }

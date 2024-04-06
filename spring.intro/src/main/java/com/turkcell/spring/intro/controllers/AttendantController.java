@@ -45,7 +45,7 @@ public class AttendantController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteAttendantResponse> deleteAttendant(@RequestParam DeleteAttendantRequest request){
+    public ResponseEntity<DeleteAttendantResponse> deleteAttendant(@RequestBody DeleteAttendantRequest request){
         return ResponseEntity.ok(attendantService.delete(request));
     }
 

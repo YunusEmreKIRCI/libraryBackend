@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteUserResponse> deleteUser(@RequestParam DeleteUserRequest request){
+    public ResponseEntity<DeleteUserResponse> deleteUser(@RequestBody DeleteUserRequest request){
         return ResponseEntity.ok(userService.delete(request));
     }
     @PutMapping("/update")

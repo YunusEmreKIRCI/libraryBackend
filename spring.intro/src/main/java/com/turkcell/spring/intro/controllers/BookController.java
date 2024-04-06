@@ -40,12 +40,12 @@ public class BookController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteBookResponse> deleteBook(@RequestParam DeleteBookRequest request){
+    public ResponseEntity<DeleteBookResponse> deleteBook(@RequestBody DeleteBookRequest request){
         return ResponseEntity.ok(bookService.delete(request));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<UpdateBookResponse> updateBook(@RequestParam UpdateBookRequest request){
+    public ResponseEntity<UpdateBookResponse> updateBook(@RequestBody UpdateBookRequest request){
         return ResponseEntity.ok(bookService.updateAvailabilty(request));
     }
 }
