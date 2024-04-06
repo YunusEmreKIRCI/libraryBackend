@@ -22,7 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AttendantServiceImpl implements AttendantService{
     private final AttendantRepository attendantRepository;
-    private AttendantMapper attendantMapper= Mappers.getMapper(AttendantMapper.class);
+    private AttendantMapper attendantMapper = Mappers.getMapper(AttendantMapper.class);
 
     @Override
     public AddAttendantResponse add(AddAttendantRequest request) {
@@ -75,7 +75,7 @@ public class AttendantServiceImpl implements AttendantService{
     private void attendantWithSameEmailShouldNotExist(AddAttendantRequest request) {
         Optional<Attendant> attendant = attendantRepository.findByEmail(request.getEmail());
         if (attendant.isPresent()) {
-            throw new IllegalArgumentException("Attendant with same email already exists");
+            throw new RuntimeException("Attendant with same email already exists");
         }
     }
 }
