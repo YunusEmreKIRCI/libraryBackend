@@ -12,6 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateAttendantRequest {
+    @NotBlank
     private int id;
+    @NotBlank
     private String password;
 }

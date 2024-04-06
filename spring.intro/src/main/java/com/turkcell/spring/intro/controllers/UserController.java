@@ -15,6 +15,7 @@ import com.turkcell.spring.intro.service.dtos.responses.user.AddUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.DeleteUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.GetUserResponse;
 import com.turkcell.spring.intro.service.dtos.responses.user.UpdateUserResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,21 +36,21 @@ public class UserController {
 
 
     @GetMapping("/getuser")
-    public ResponseEntity<GetUserResponse> getUser(GetUserRequest request){
+    public ResponseEntity<GetUserResponse> getUser(@Valid GetUserRequest request){
         return ResponseEntity.ok(userService.getById(request));
     }
     @PostMapping("/add")
-    public ResponseEntity<AddUserResponse> addUser(@RequestBody AddUserRequest request){
+    public ResponseEntity<AddUserResponse> addUser(@RequestBody @Valid AddUserRequest request){
 
         return ResponseEntity.ok(userService.add(request));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteUserResponse> deleteUser(@RequestBody DeleteUserRequest request){
+    public ResponseEntity<DeleteUserResponse> deleteUser(@RequestBody @Valid DeleteUserRequest request){
         return ResponseEntity.ok(userService.delete(request));
     }
     @PutMapping("/update")
-    public ResponseEntity<UpdateUserResponse> updateUser(@RequestBody UpdateUserRequest request){
+    public ResponseEntity<UpdateUserResponse> updateUser(@RequestBody @Valid UpdateUserRequest request){
         return ResponseEntity.ok(userService.updatePassword(request));
     }
 

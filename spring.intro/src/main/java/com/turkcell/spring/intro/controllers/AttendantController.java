@@ -7,6 +7,7 @@ import com.turkcell.spring.intro.service.dtos.requests.attendant.UpdateAttendant
 import com.turkcell.spring.intro.service.dtos.responses.attendant.AddAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.DeleteAttendantResponse;
 import com.turkcell.spring.intro.service.dtos.responses.attendant.GetAttendantResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class AttendantController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<AddAttendantResponse> addAttendant(@RequestBody AddAttendantRequest request){
+    public ResponseEntity<AddAttendantResponse> addAttendant(@RequestBody @Valid AddAttendantRequest request){
         AddAttendantResponse response = attendantService.add(request);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(response.getId()).toUri();
@@ -39,18 +40,18 @@ public class AttendantController {
     }
 
     @GetMapping("/getattendant")
-    public ResponseEntity<GetAttendantResponse> getAttendant(GetAttendantRequest request){
+    public ResponseEntity<GetAttendantResponse> getAttendant(@Valid GetAttendantRequest request){
 
         return ResponseEntity.ok(attendantService.getById(request));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteAttendantResponse> deleteAttendant(@RequestBody DeleteAttendantRequest request){
+    public ResponseEntity<DeleteAttendantResponse> deleteAttendant(@RequestBody @Valid DeleteAttendantRequest request){
         return ResponseEntity.ok(attendantService.delete(request));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<UpdateAttendantRequest> updateAttendant(@RequestBody UpdateAttendantRequest request){
+    public ResponseEntity<UpdateAttendantRequest> updateAttendant(@RequestBody @Valid UpdateAttendantRequest request){
         return ResponseEntity.ok(attendantService.updatePassword(request));
     }
 

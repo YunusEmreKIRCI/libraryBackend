@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAttendantRequest {
+    @NotBlank
     private int id;
 
 }

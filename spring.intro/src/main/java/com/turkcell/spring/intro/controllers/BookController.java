@@ -11,6 +11,7 @@ import com.turkcell.spring.intro.service.dtos.responses.book.AddBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.DeleteBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.GetBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.UpdateBookResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,23 +30,23 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<AddBookResponse> addBook(@RequestBody AddBookRequest request){
+    public ResponseEntity<AddBookResponse> addBook(@RequestBody @Valid AddBookRequest request){
         return ResponseEntity.ok(bookService.add(request));
     }
 
     @GetMapping("/getbook")
-    public ResponseEntity<GetBookResponse> getBook(GetBookRequest request){
+    public ResponseEntity<GetBookResponse> getBook(@Valid GetBookRequest request){
 
         return ResponseEntity.ok(bookService.getById(request));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteBookResponse> deleteBook(@RequestBody DeleteBookRequest request){
+    public ResponseEntity<DeleteBookResponse> deleteBook(@RequestBody @Valid DeleteBookRequest request){
         return ResponseEntity.ok(bookService.delete(request));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<UpdateBookResponse> updateBook(@RequestBody UpdateBookRequest request){
+    public ResponseEntity<UpdateBookResponse> updateBook(@RequestBody @Valid UpdateBookRequest request){
         return ResponseEntity.ok(bookService.updateAvailabilty(request));
     }
 }

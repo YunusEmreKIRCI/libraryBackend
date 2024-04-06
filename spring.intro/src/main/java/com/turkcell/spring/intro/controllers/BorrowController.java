@@ -12,6 +12,7 @@ import com.turkcell.spring.intro.service.dtos.responses.borrow.AddBorrowResponse
 import com.turkcell.spring.intro.service.dtos.responses.borrow.DeleteBorrowResponse;
 import com.turkcell.spring.intro.service.dtos.responses.borrow.GetBorrowResponse;
 import com.turkcell.spring.intro.service.dtos.responses.borrow.UpdateBorrowResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,22 +33,22 @@ public class BorrowController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<DeleteBorrowResponse> deleteBorrow(@RequestBody DeleteBorrowRequest request){
+    public ResponseEntity<DeleteBorrowResponse> deleteBorrow(@RequestBody @Valid DeleteBorrowRequest request){
         return ResponseEntity.ok(borrowService.delete(request));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<UpdateBorrowResponse> updateBorrow(@RequestBody UpdateBorrowRequest request){
+    public ResponseEntity<UpdateBorrowResponse> updateBorrow(@RequestBody @Valid UpdateBorrowRequest request){
         return ResponseEntity.ok(borrowService.update(request));
     }
 
     @PostMapping("/add")
-    public ResponseEntity<AddBorrowResponse> addBorrow(@RequestBody AddBorrowRequest request){
+    public ResponseEntity<AddBorrowResponse> addBorrow(@RequestBody @Valid AddBorrowRequest request){
         return ResponseEntity.ok(borrowService.add(request));
     }
 
     @GetMapping("/getborrow")
-    public ResponseEntity<GetBorrowResponse> getBorrow(@RequestBody GetBorrowRequest request){
+    public ResponseEntity<GetBorrowResponse> getBorrow(@RequestBody @Valid GetBorrowRequest request){
         return ResponseEntity.ok(borrowService.getById(request));
     }
 }
