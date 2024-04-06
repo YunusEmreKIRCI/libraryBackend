@@ -26,10 +26,7 @@ public class AttendantServiceImpl implements AttendantService{
 
     @Override
     public AddAttendantResponse add(AddAttendantRequest request) {
-        Optional<Attendant> attendantWithSameEmail = attendantRepository.findByEmail(request.getEmail());
-        if(attendantWithSameEmail.isPresent()){
-            throw new IllegalArgumentException("Attendant with same email already exists");
-        }
+       attendantWithSameEmailShouldNotExist(request);
        Attendant attendant = attendantMapper.mapToAttendant(request);
        return attendantMapper.mapToAddAttendantResponse(attendantRepository.save(attendant));
     }
@@ -74,5 +71,11 @@ public class AttendantServiceImpl implements AttendantService{
             return attendantMapper.mapToAttendantResponse(attendant);
         }
 
+    }
+    private void attendantWithSameEmailShouldNotExist(AddAttendantRequest request) {
+        Optional<Attendant> attendant = attendantRepository.findByEmail(request.getEmail());
+        if (attendant.isPresent()) {
+            throw new IllegalArgumentException("Attendant with same email already exists");
+        }
     }
 }

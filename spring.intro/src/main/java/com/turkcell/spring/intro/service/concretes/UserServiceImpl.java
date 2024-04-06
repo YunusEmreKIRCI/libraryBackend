@@ -29,10 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AddUserResponse add(AddUserRequest request) {
-        Optional<User> userWithSameEmail = userRepository.findByEmail(request.getEmail());
-        if(userWithSameEmail.isPresent()){
-            throw new IllegalArgumentException("User with same email already exists");
-        }
+        userWithSameEmailShouldNotExist(request);
         User user = userMapper.mapToUser(request);
         return userMapper.mapToAddUserResponse(userRepository.save(user));
     }
@@ -76,6 +73,12 @@ public class UserServiceImpl implements UserService {
         else{
 
             return userMapper.mapToUserResponse(userRepository.save(user));
+        }
+    }
+    private void userWithSameEmailShouldNotExist(AddUserRequest request){
+        Optional<User> userWithSameEmail = userRepository.findByEmail(request.getEmail());
+        if(userWithSameEmail.isPresent()){
+            throw new IllegalArgumentException("User with same email already exists");
         }
     }
 }
