@@ -1,7 +1,8 @@
 package com.turkcell.spring.intro.service.mappers.abstracts;
 
 import com.turkcell.spring.intro.entities.Book;
-import com.turkcell.spring.intro.service.dtos.requests.book.GetBookRequest;
+import com.turkcell.spring.intro.service.dtos.requests.book.AddBookRequest;
+import com.turkcell.spring.intro.service.dtos.responses.book.AddBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.DeleteBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.GetBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.UpdateBookResponse;
@@ -11,20 +12,20 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-04T11:59:50+0300",
+    date = "2024-04-06T04:17:52+0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17 (Oracle Corporation)"
 )
 public class BookMapperImpl implements BookMapper {
 
     @Override
-    public Book mapToBook(GetBookRequest bookDto) {
+    public Book mapToBook(AddBookRequest bookDto) {
         if ( bookDto == null ) {
             return null;
         }
 
         Book book = new Book();
 
-        book.setId( bookDto.getId() );
+        book.setName( bookDto.getName() );
 
         return book;
     }
@@ -83,5 +84,18 @@ public class BookMapperImpl implements BookMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public AddBookResponse mapToAddBookResponse(Book save) {
+        if ( save == null ) {
+            return null;
+        }
+
+        AddBookResponse addBookResponse = new AddBookResponse();
+
+        addBookResponse.setId( save.getId() );
+
+        return addBookResponse;
     }
 }

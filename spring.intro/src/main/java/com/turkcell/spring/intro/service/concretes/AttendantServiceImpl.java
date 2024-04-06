@@ -11,6 +11,7 @@ import com.turkcell.spring.intro.service.dtos.responses.attendant.DeleteAttendan
 import com.turkcell.spring.intro.service.dtos.responses.attendant.GetAttendantResponse;
 import com.turkcell.spring.intro.service.mappers.abstracts.AttendantMapper;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import com.turkcell.spring.intro.service.abtracts.AttendantService;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AttendantServiceImpl implements AttendantService{
     private final AttendantRepository attendantRepository;
-    private final AttendantMapper attendantMapper;
+    private AttendantMapper attendantMapper= Mappers.getMapper(AttendantMapper.class);
 
     @Override
     public AddAttendantResponse add(AddAttendantRequest request) {

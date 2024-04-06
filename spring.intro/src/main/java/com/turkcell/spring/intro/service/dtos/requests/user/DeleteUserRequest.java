@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DeleteUserRequest {
     private int id;
-    private String email;
+
 }
 

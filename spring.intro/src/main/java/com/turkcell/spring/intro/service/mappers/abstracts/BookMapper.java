@@ -1,7 +1,9 @@
 package com.turkcell.spring.intro.service.mappers.abstracts;
 
 import com.turkcell.spring.intro.entities.Book;
+import com.turkcell.spring.intro.service.dtos.requests.book.AddBookRequest;
 import com.turkcell.spring.intro.service.dtos.requests.book.GetBookRequest;
+import com.turkcell.spring.intro.service.dtos.responses.book.AddBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.DeleteBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.GetBookResponse;
 import com.turkcell.spring.intro.service.dtos.responses.book.UpdateBookResponse;
@@ -14,7 +16,7 @@ import java.util.List;
 public interface BookMapper {
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 
-    Book mapToBook(GetBookRequest bookDto);
+    Book mapToBook(AddBookRequest bookDto);
     GetBookResponse mapToBookResponse(Book book);
 
     UpdateBookResponse mapToUpdateBookResponse(Book book);
@@ -23,4 +25,5 @@ public interface BookMapper {
 
     List<GetBookResponse> mapToBookResponseList(List<Book> books);
 
+    AddBookResponse mapToAddBookResponse(Book save);
 }
